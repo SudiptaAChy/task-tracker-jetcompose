@@ -21,6 +21,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -36,6 +38,7 @@ fun Login(modifier: Modifier = Modifier) {
             HeaderPart()
             EmailField()
             PasswordFiled()
+            RememberMeLayout()
             SubmitButton()
         }
     }
@@ -164,7 +167,7 @@ fun SubmitButton() {
         onClick = {},
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 20.dp)
+            .padding(top = 10.dp)
             .background(gradientColor, shape = RoundedCornerShape(50.dp)),
         colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
     ) {
@@ -176,5 +179,28 @@ fun SubmitButton() {
                 fontWeight = FontWeight.Bold,
             ),
         )
+    }
+}
+
+@Composable
+fun RememberMeLayout() {
+    var checkedState = remember { mutableStateOf(false) }
+
+    Row {
+        Checkbox(
+            checked = checkedState.value,
+            onCheckedChange = { checkedState.value = it },
+            colors = CheckboxDefaults.colors(
+                checkedColor = Color.Blue
+            )
+        )
+        Text("Remember me", modifier = Modifier.padding(top = 12.dp))
+        Row(modifier=Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+            Text(
+                "Forgot password?",
+                modifier = Modifier.padding(top = 13.dp),
+                style = TextStyle(color = Color.Gray)
+            )
+        }
     }
 }

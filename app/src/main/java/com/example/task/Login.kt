@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
@@ -128,13 +129,18 @@ fun PasswordFiled() {
 fun SubmitButton() {
     Button(
         onClick = {},
-        modifier = Modifier.fillMaxWidth().padding(top=20.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 20.dp)
+            .background(gradientColor, shape = RoundedCornerShape(50.dp)),
+        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
     ) {
-        Text("Login",
+        Text(
+            "Login",
             style = TextStyle(
                 color = Color.White,
                 fontSize = 16.sp,
-                letterSpacing = 5.sp,
+                fontWeight = FontWeight.Bold,
             ),
         )
     }

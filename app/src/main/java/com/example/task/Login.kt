@@ -1,5 +1,6 @@
 package com.example.task
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,6 +14,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -30,10 +33,39 @@ fun Login(modifier: Modifier = Modifier) {
         .padding(20.dp)
     ) {
         Column(modifier = modifier) {
+            HeaderPart()
             EmailField()
             PasswordFiled()
             SubmitButton()
         }
+    }
+}
+
+@OptIn(ExperimentalTextApi::class)
+@Composable
+fun HeaderPart() {
+    Column() {
+        Image(
+            painter = painterResource(id = R.drawable.cbl_main_logo),
+            contentDescription = "Main logo",
+            modifier = Modifier.padding(top = 20.dp, bottom = 20.dp)
+        )
+        Text(
+            "Login",
+            style = TextStyle(
+                fontSize = 26.sp,
+                fontWeight = FontWeight.Bold,
+                letterSpacing = 3.sp,
+                brush = gradientColor,
+            ),
+        )
+        Text(
+            "Enter info for login",
+            style = TextStyle(
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+            ),
+        )
     }
 }
 
@@ -47,6 +79,7 @@ fun EmailField() {
         onValueChange = { email.value = it },
         modifier = Modifier
             .fillMaxWidth()
+            .padding(top = 20.dp)
             .background(
                 gradientColor, shape = RoundedCornerShape(50.dp)
             ),

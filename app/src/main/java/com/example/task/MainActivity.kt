@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.example.task
 
 import android.os.Bundle
@@ -18,18 +20,22 @@ import androidx.compose.ui.unit.dp
 import com.example.task.ui.theme.TaskTheme
 
 class MainActivity : ComponentActivity() {
-    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             TaskTheme {
-                Scaffold(
-                    floatingActionButton = { FloatingButton() },
-                ) { padding ->
-                    Home(Modifier.padding(padding))
-                }
+                Login()
             }
         }
+    }
+}
+
+@Composable
+fun HomeScreen() {
+    Scaffold(
+        floatingActionButton = { FloatingButton() },
+    ) { padding ->
+        Home(Modifier.padding(padding))
     }
 }
 
@@ -45,10 +51,10 @@ fun FloatingButton() {
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, name = "Login screen")
 @Composable
 fun DefaultPreview() {
     TaskTheme {
-        Home()
+        Login()
     }
 }

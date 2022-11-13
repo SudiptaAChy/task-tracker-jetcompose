@@ -5,6 +5,9 @@ package com.example.task
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -15,6 +18,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.task.ui.theme.TaskTheme
@@ -24,7 +29,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             TaskTheme {
-                Login()
+                LoginScreen()
             }
         }
     }
@@ -36,6 +41,23 @@ fun HomeScreen() {
         floatingActionButton = { FloatingButton() },
     ) { padding ->
         Home(Modifier.padding(padding))
+    }
+}
+
+@Composable
+fun LoginScreen() {
+    Box {
+        Image(
+            modifier = Modifier.fillMaxSize(),
+            painter = painterResource(R.drawable.login_background),
+            contentDescription = "background_image",
+            contentScale = ContentScale.FillBounds
+        )
+    }
+    Scaffold(
+        containerColor = Color.Transparent,
+    ) { padding ->
+        Login(Modifier.padding(padding))
     }
 }
 
@@ -55,6 +77,6 @@ fun FloatingButton() {
 @Composable
 fun DefaultPreview() {
     TaskTheme {
-        Login()
+        LoginScreen()
     }
 }

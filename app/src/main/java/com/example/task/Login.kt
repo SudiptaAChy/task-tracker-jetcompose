@@ -24,6 +24,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -31,19 +32,16 @@ private val gradientColor = Brush.horizontalGradient(listOf(Color(0xFFED1556), C
 
 @Composable
 fun Login(modifier: Modifier = Modifier) {
-    Box(modifier = modifier
-        .fillMaxSize()
-        .padding(20.dp)
+    Column(
+        modifier = modifier.fillMaxSize().padding(20.dp)
     ) {
-        Column {
-            HeaderPart()
-            EmailField()
-            PasswordFiled()
-            RememberMeLayout()
-            SubmitButton()
-            FingerprintImage()
-            FooterPart()
-        }
+        HeaderPart()
+        EmailField()
+        PasswordFiled()
+        RememberMeLayout()
+        SubmitButton()
+        FingerprintImage()
+        FooterPart()
     }
 }
 
@@ -241,6 +239,9 @@ fun FooterPart() {
                 colors = CardDefaults.cardColors (
                     containerColor = Color.White,
                 ),
+                elevation = CardDefaults.cardElevation(
+                    defaultElevation = 2.dp,
+                ),
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.ic_today_rate),
@@ -260,6 +261,9 @@ fun FooterPart() {
                 colors = CardDefaults.cardColors (
                     containerColor = Color.White,
                 ),
+                elevation = CardDefaults.cardElevation(
+                    defaultElevation = 2.dp,
+                ),
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.ic_register),
@@ -278,6 +282,9 @@ fun FooterPart() {
                 shape = RoundedCornerShape(15.dp),
                 colors = CardDefaults.cardColors (
                     containerColor = Color.White,
+                ),
+                elevation = CardDefaults.cardElevation(
+                    defaultElevation = 2.dp,
                 ),
             ) {
                 Image(

@@ -11,6 +11,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -34,12 +35,14 @@ fun Login(modifier: Modifier = Modifier) {
         .fillMaxSize()
         .padding(20.dp)
     ) {
-        Column(modifier = modifier) {
+        Column {
             HeaderPart()
             EmailField()
             PasswordFiled()
             RememberMeLayout()
             SubmitButton()
+            FingerprintImage()
+            FooterPart()
         }
     }
 }
@@ -51,7 +54,7 @@ fun HeaderPart() {
         Image(
             painter = painterResource(id = R.drawable.cbl_main_logo),
             contentDescription = "Main logo",
-            modifier = Modifier.padding(top = 20.dp, bottom = 20.dp)
+            modifier = Modifier.padding(top = 20.dp, bottom = 10.dp)
         )
         Text(
             "Login",
@@ -201,6 +204,90 @@ fun RememberMeLayout() {
                 modifier = Modifier.padding(top = 13.dp),
                 style = TextStyle(color = Color.Gray)
             )
+        }
+    }
+}
+
+@Composable
+fun FingerprintImage() {
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally) {
+        Image(
+            painter = painterResource(id = R.drawable.ic_biometric),
+            contentDescription = "Finger print",
+            modifier = Modifier
+                .height(80.dp)
+                .width(80.dp)
+                .padding(top = 20.dp),
+            alignment = Alignment.Center
+        )
+    }
+}
+
+@Composable
+fun FooterPart() {
+    Row (
+        modifier = Modifier.fillMaxSize(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.Bottom
+    ) {
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Card(
+                shape = RoundedCornerShape(15.dp),
+                colors = CardDefaults.cardColors (
+                    containerColor = Color.White,
+                ),
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_today_rate),
+                    contentDescription = "Today's rate",
+                    modifier = Modifier.padding(5.dp),
+                    alignment = Alignment.Center
+                )
+            }
+            Text("Today's Rate", modifier = Modifier.padding(top = 2.dp), style = TextStyle(fontSize = 12.sp))
+        }
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Card(
+                shape = RoundedCornerShape(15.dp),
+                colors = CardDefaults.cardColors (
+                    containerColor = Color.White,
+                ),
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_register),
+                    contentDescription = "Register",
+                    modifier = Modifier.padding(5.dp),
+                    alignment = Alignment.Center
+                )
+            }
+            Text("Register", modifier = Modifier.padding(top = 2.dp), style = TextStyle(fontSize = 12.sp))
+        }
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Card(
+                shape = RoundedCornerShape(15.dp),
+                colors = CardDefaults.cardColors (
+                    containerColor = Color.White,
+                ),
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_support),
+                    contentDescription = "Support",
+                    modifier = Modifier.padding(5.dp),
+                    alignment = Alignment.Center
+                )
+            }
+            Text("Support", modifier = Modifier.padding(top = 2.dp), style = TextStyle(fontSize = 12.sp))
         }
     }
 }

@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.example.task.Signup
+package com.example.task.ui.Signup
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

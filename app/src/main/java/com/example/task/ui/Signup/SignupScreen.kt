@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.example.task.Login
+package com.example.task.ui.Signup
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -13,22 +13,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import com.example.task.Login
 import com.example.task.R
 
 @Composable
-fun LoginScreen() {
+fun  SignupScreen() {
     Box {
-        Image(
-            modifier = Modifier.fillMaxSize(),
-            painter = painterResource(R.drawable.login_background),
-            contentDescription = "background_image",
-            contentScale = ContentScale.FillBounds
-        )
-    }
+    Image(
+        modifier = Modifier.fillMaxSize(),
+        painter = painterResource(R.drawable.login_background),
+        contentDescription = "background_image",
+        contentScale = ContentScale.FillBounds
+    )
+}
     Scaffold(
         containerColor = Color.Transparent,
     ) { padding ->
-        Login(Modifier.padding(padding))
+        Signup(Modifier.padding(padding))
     }
 }

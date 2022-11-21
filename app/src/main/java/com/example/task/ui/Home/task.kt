@@ -1,4 +1,4 @@
-package com.example.task.Home
+package com.example.task.ui.Home
 
 data class task(
     val date: String,

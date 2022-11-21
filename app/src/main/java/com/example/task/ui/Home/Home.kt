@@ -14,8 +14,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.task.Home.dummyTasks
-import com.example.task.Home.task
+import com.example.task.ui.Home.dummyTasks
+import com.example.task.ui.Home.task
 
 @Composable
 fun Home(modifier: Modifier = Modifier) {

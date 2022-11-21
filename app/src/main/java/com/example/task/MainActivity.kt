@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.task.ui.AddTask.AddTaskScreen
 import com.example.task.ui.Home.HomeScreen
 import com.example.task.ui.Login.LoginScreen
 import com.example.task.ui.Signup.SignupScreen
@@ -15,16 +16,16 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             TaskTheme {
-                LoginScreen()
+                AddTaskScreen()
             }
         }
     }
 }
 
-@Preview(showBackground = true, name = "Login screen")
+@Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     TaskTheme {
-        SignupScreen()
+        AddTaskScreen()
     }
 }

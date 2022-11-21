@@ -46,13 +46,13 @@ fun Home(modifier: Modifier = Modifier) {
 fun taskList(tasks: List<task>) {
     LazyColumn {
         items(tasks) { task ->
-            taskItem(Modifier, task.date, task.time)
+            TaskItem(Modifier, task.date, task.time)
         }
     }
 }
 
 @Composable
-fun taskItem(
+fun TaskItem(
     modifier: Modifier = Modifier,
     date: String = "22-09-22",
     time: String = "2h 20m",

@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.example.task
 
 import androidx.compose.foundation.Image
@@ -13,27 +15,26 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
-private val gradientColor = Brush.horizontalGradient(listOf(Color(0xFFED1556), Color(0xFFB24198), Color(0xFF2EB1E6)))
+import com.example.task.Config.gradientColor
+import com.example.task.Config.gradientTextStyle1
+import com.example.task.Config.textStyle1
+import com.example.task.Config.textStyle2
 
 @Composable
 fun Login(modifier: Modifier = Modifier) {
     Column(
-        modifier = modifier.fillMaxSize().padding(20.dp)
+        modifier = modifier
+            .fillMaxSize()
+            .padding(20.dp)
     ) {
         HeaderPart()
         EmailField()
@@ -45,7 +46,6 @@ fun Login(modifier: Modifier = Modifier) {
     }
 }
 
-@OptIn(ExperimentalTextApi::class)
 @Composable
 fun HeaderPart() {
     Column() {
@@ -56,24 +56,15 @@ fun HeaderPart() {
         )
         Text(
             "Login",
-            style = TextStyle(
-                fontSize = 26.sp,
-                fontWeight = FontWeight.Bold,
-                letterSpacing = 3.sp,
-                brush = gradientColor,
-            ),
+            style = gradientTextStyle1,
         )
         Text(
             "Enter info for login",
-            style = TextStyle(
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Bold,
-            ),
+            style = textStyle2,
         )
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EmailField() {
     val email = remember { mutableStateOf(TextFieldValue()) }
@@ -102,16 +93,11 @@ fun EmailField() {
         ),
         placeholder = { Text(
             "Enter Email",
-            style = TextStyle(
-                color = Color.White,
-                fontSize = 16.sp,
-                letterSpacing = 3.sp,
-            ),
+            style = textStyle1,
         ) },
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PasswordFiled() {
     val password = remember { mutableStateOf(TextFieldValue()) }
@@ -134,18 +120,10 @@ fun PasswordFiled() {
             unfocusedIndicatorColor = Color.Transparent
         ),
         shape = RoundedCornerShape(50.dp),
-        textStyle = TextStyle(
-            color = Color.White,
-            fontSize = 16.sp,
-            letterSpacing = 3.sp,
-        ),
+        textStyle = textStyle1,
         placeholder = { Text(
             "Password",
-            style = TextStyle(
-                color = Color.White,
-                fontSize = 16.sp,
-                letterSpacing = 3.sp,
-            ),
+            style = textStyle1,
         ) },
         trailingIcon = {
             val image = if (passwordVisible.value)
@@ -230,71 +208,37 @@ fun FooterPart() {
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.Bottom
     ) {
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+        GetCardItem(image = R.drawable.ic_today_rate, title = "Today's rate")
+        GetCardItem(image = R.drawable.ic_register, title = "Register")
+        GetCardItem(image = R.drawable.ic_support, title = "Support")
+    }
+}
+
+@Composable
+fun GetCardItem(
+    image: Int,
+    title:String
+) {
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Card(
+            shape = RoundedCornerShape(15.dp),
+            colors = CardDefaults.cardColors (
+                containerColor = Color.White,
+            ),
+            elevation = CardDefaults.cardElevation(
+                defaultElevation = 2.dp,
+            ),
         ) {
-            Card(
-                shape = RoundedCornerShape(15.dp),
-                colors = CardDefaults.cardColors (
-                    containerColor = Color.White,
-                ),
-                elevation = CardDefaults.cardElevation(
-                    defaultElevation = 2.dp,
-                ),
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.ic_today_rate),
-                    contentDescription = "Today's rate",
-                    modifier = Modifier.padding(5.dp),
-                    alignment = Alignment.Center
-                )
-            }
-            Text("Today's Rate", modifier = Modifier.padding(top = 2.dp), style = TextStyle(fontSize = 12.sp))
+            Image(
+                painter = painterResource(id = image),
+                contentDescription = title,
+                modifier = Modifier.padding(5.dp),
+                alignment = Alignment.Center
+            )
         }
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Card(
-                shape = RoundedCornerShape(15.dp),
-                colors = CardDefaults.cardColors (
-                    containerColor = Color.White,
-                ),
-                elevation = CardDefaults.cardElevation(
-                    defaultElevation = 2.dp,
-                ),
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.ic_register),
-                    contentDescription = "Register",
-                    modifier = Modifier.padding(5.dp),
-                    alignment = Alignment.Center
-                )
-            }
-            Text("Register", modifier = Modifier.padding(top = 2.dp), style = TextStyle(fontSize = 12.sp))
-        }
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Card(
-                shape = RoundedCornerShape(15.dp),
-                colors = CardDefaults.cardColors (
-                    containerColor = Color.White,
-                ),
-                elevation = CardDefaults.cardElevation(
-                    defaultElevation = 2.dp,
-                ),
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.ic_support),
-                    contentDescription = "Support",
-                    modifier = Modifier.padding(5.dp),
-                    alignment = Alignment.Center
-                )
-            }
-            Text("Support", modifier = Modifier.padding(top = 2.dp), style = TextStyle(fontSize = 12.sp))
-        }
+        Text(title, modifier = Modifier.padding(top = 2.dp), style = TextStyle(fontSize = 12.sp))
     }
 }

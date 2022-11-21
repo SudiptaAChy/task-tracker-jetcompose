@@ -1,4 +1,4 @@
-package com.example.task
+package com.example.task.Home
 
 data class task(
     val date: String,
@@ -7,6 +7,18 @@ data class task(
 
 fun dummyTasks(): List<task> {
     return listOf(
+        task("22-09-22", "2h 20m"),
+        task("22-09-22", "2h 20m"),
+        task("22-09-22", "2h 20m"),
+        task("22-09-22", "2h 20m"),
+        task("22-09-22", "2h 20m"),
+        task("22-09-22", "2h 20m"),
+        task("22-09-22", "2h 20m"),
+        task("22-09-22", "2h 20m"),
+        task("22-09-22", "2h 20m"),
+        task("22-09-22", "2h 20m"),
+        task("22-09-22", "2h 20m"),
+        task("22-09-22", "2h 20m"),
         task("22-09-22", "2h 20m"),
         task("22-09-22", "2h 20m"),
         task("22-09-22", "2h 20m"),

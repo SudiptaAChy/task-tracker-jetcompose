@@ -24,10 +24,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.task.Config.gradientColor
-import com.example.task.Config.gradientTextStyle1
-import com.example.task.Config.textStyle1
-import com.example.task.Config.textStyle2
+import com.example.task.Config.*
 
 @Composable
 fun Login(modifier: Modifier = Modifier) {
@@ -152,11 +149,7 @@ fun SubmitButton() {
     ) {
         Text(
             "Login",
-            style = TextStyle(
-                color = Color.White,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold,
-            ),
+            style = buttonTextStyle,
         )
     }
 }

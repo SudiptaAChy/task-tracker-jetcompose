@@ -26,3 +26,9 @@ val gradientTextStyle1 = TextStyle(
     letterSpacing = 3.sp,
     brush = gradientColor,
 )
+
+val buttonTextStyle = TextStyle(
+    color = Color.White,
+    fontSize = 16.sp,
+    fontWeight = FontWeight.Bold,
+)

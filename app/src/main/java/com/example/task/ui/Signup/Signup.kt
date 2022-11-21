@@ -29,10 +29,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.task.*
-import com.example.task.Config.gradientColor
-import com.example.task.Config.gradientTextStyle1
-import com.example.task.Config.textStyle1
-import com.example.task.Config.textStyle2
+import com.example.task.Config.*
 import com.example.task.R
 import com.example.task.ui.theme.gradientColor1
 import com.example.task.ui.theme.gradientColor2
@@ -150,11 +147,7 @@ fun SubmitButton() {
     ) {
         Text(
             "Signup",
-            style = TextStyle(
-                color = Color.White,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold,
-            ),
+            style = buttonTextStyle,
         )
     }
 }

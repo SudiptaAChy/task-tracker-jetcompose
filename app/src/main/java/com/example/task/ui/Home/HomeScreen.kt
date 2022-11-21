@@ -15,24 +15,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.task.Home
+import com.example.task.ui.theme.PrimaryColor
 
 @Composable
 fun HomeScreen() {
     Scaffold(
-        floatingActionButton = { FloatingButton() },
+        floatingActionButton = { FloatingAddButton() },
     ) { padding ->
         Home(Modifier.padding(padding))
     }
 }
 
 @Composable
-fun FloatingButton() {
+fun FloatingAddButton() {
     FloatingActionButton(
         onClick = {},
-        containerColor = Color.Blue,
+        containerColor = PrimaryColor,
         contentColor = Color.White,
         shape = RoundedCornerShape(50.dp),
     ) {
-        Icon(Icons.Filled.Add, contentDescription = "")
+        Icon(Icons.Filled.Add, contentDescription = "Add task")
     }
 }

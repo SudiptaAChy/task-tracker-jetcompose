@@ -25,9 +25,9 @@ fun AddTaskScreen() {
     Scaffold(
         topBar = { AppBar() },
         floatingActionButton = { FloatingSubmitButton() },
-        floatingActionButtonPosition = FabPosition.Center
+        floatingActionButtonPosition = FabPosition.Center,
     ) { padding ->
-        AddTask(Modifier.padding(padding))
+        BottomSheetForm(Modifier.padding(padding))
     }
 }
 

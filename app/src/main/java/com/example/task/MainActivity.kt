@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.task.ui.AddTask.AddTaskForm
 import com.example.task.ui.AddTask.AddTaskScreen
 import com.example.task.ui.Home.HomeScreen
 import com.example.task.ui.Login.LoginScreen
@@ -17,6 +18,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             TaskTheme {
                 AddTaskScreen()
+//                AddTaskForm()
             }
         }
     }

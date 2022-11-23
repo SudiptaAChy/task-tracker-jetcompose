@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterialApi::class)
+
 package com.example.task.ui.AddTask
 
 import android.app.DatePickerDialog
@@ -9,13 +11,19 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.*
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -25,18 +33,24 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.task.ui.theme.GreenColor
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 import java.util.*
 
 @RequiresApi(Build.VERSION_CODES.N)
 @Composable
-fun AddTask(modifier: Modifier = Modifier) {
+fun AddTask(
+    modifier: Modifier = Modifier,
+    scope: CoroutineScope,
+    bottomSheetScaffoldState: BottomSheetScaffoldState,
+) {
     Column(
         modifier = modifier
             .fillMaxSize()
             .padding(start = 15.dp, end = 15.dp, top = 5.dp)
     ) {
         DateContainer()
-        TaskContainer()
+        TaskContainer(scope, bottomSheetScaffoldState)
         TasksList(getTasksList())
     }
 }
@@ -79,7 +93,10 @@ fun DateContainer() {
 }
 
 @Composable
-fun TaskContainer() {
+fun TaskContainer(
+    scope: CoroutineScope,
+    bottomSheetScaffoldState: BottomSheetScaffoldState,
+) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -87,7 +104,15 @@ fun TaskContainer() {
     ) {
         Text("Tasks", style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold))
         IconButton(
-            onClick = {}
+            onClick = {
+                scope.launch {
+                    if (bottomSheetScaffoldState.bottomSheetState.isCollapsed) {
+                        bottomSheetScaffoldState.bottomSheetState.expand()
+                    } else {
+                        bottomSheetScaffoldState.bottomSheetState.collapse()
+                    }
+                }
+            }
         ) {
             Icon(
                 Icons.Filled.Add,
@@ -138,5 +163,23 @@ fun TaskItem(
                 fontSize = 14.sp,
                 modifier = modifier.padding(5.dp))
         }
+    }
+}
+
+@RequiresApi(Build.VERSION_CODES.N)
+@Composable
+fun BottomSheetForm(modifier: Modifier = Modifier) {
+    val scope = rememberCoroutineScope()
+
+    val bottomSheetScaffoldState = rememberBottomSheetScaffoldState(
+        bottomSheetState = BottomSheetState(BottomSheetValue.Collapsed)
+    )
+    
+    BottomSheetScaffold(
+        scaffoldState = bottomSheetScaffoldState,
+        sheetContent = { AddTaskForm() },
+        sheetPeekHeight = 0.dp,
+    ) {
+        AddTask(modifier, scope, bottomSheetScaffoldState)
     }
 }
